@@ -1,0 +1,41 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc:clean": "tsc --build scripts/ --clean",
+    "tsc": "tsc --build scripts/",
+    "tsc:watch": "tsc --build scripts/ --watch",
+    "gulp:clean": "gulp clean",
+    "gulp:all": "gulp vendor && gulp css && gulp scripts",
+    "gulp:watch": "gulp watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "jquery-validation": "^1.19.0",
+    "systemjs": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.29",
+    "@types/jquery.validation": "^1.16.6",
+    "del": "^4.0.0",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "typescript": "^3.4.1"
+  },
+  "-vs-binding": {
+    "AfterBuild": [
+      "tsc",
+      "gulp:all"
+    ],
+    "Clean": [
+      "tsc:clean",
+      "gulp:clean"
+    ]
+  }
+}

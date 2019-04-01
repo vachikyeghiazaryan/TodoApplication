@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="col-md-12">
+    <div id="todo-app">
+        <div class="title">
+            <h1>Todos</h1>
+        </div>
+
+        <div class="content">
+            <div class="card card-body">
+                <form id="todo-form">
+                    <input name="id" type="hidden" />
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input name="name" type="text" class="form-control" autocomplete="off" />
+                    </div>
+                    <label id="val-errors" class="error" style="display:block;"></label>
+                    <button class="btn btn-primary" type="submit">Save</button>
+                    <button class="btn btn-primary" type="reset">Reset</button>
+                </form>
+            </div>
+
+            <div id="todos">
+                <input class="check mark-all-done" type="checkbox" />
+                <label for="check-all">Mark all as complete</label>
+                <ul id="todo-list" class="list-group"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            var app = new AppModule.App();
+
+            app.setPage(PageNamesEnum.TodoPage);
+            app.run();
+        })();
+    </script>
+}

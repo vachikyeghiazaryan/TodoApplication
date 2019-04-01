@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>3.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\dist\**" />
+    <Content Remove="wwwroot\dist\**" />
+    <EmbeddedResource Remove="wwwroot\dist\**" />
+    <None Remove="wwwroot\dist\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <TypeScriptCompile Include="scripts\api\apiClient.d.ts" />
+    <TypeScriptCompile Include="scripts\api\apiClient.ts" />
+    <TypeScriptCompile Include="scripts\app.ts" />
+    <TypeScriptCompile Include="scripts\enums\pageNamesEnum.d.ts" />
+    <TypeScriptCompile Include="scripts\enums\pageNamesEnum.ts" />
+    <TypeScriptCompile Include="scripts\models\markTodoModel.d.ts" />
+    <TypeScriptCompile Include="scripts\models\markTodoModel.ts" />
+    <TypeScriptCompile Include="scripts\models\todoModel.d.ts" />
+    <TypeScriptCompile Include="scripts\models\todoModel.ts" />
+    <TypeScriptCompile Include="scripts\pages\IPage.d.ts" />
+    <TypeScriptCompile Include="scripts\pages\IPage.ts" />
+    <TypeScriptCompile Include="scripts\providers\pageProvider.d.ts" />
+    <TypeScriptCompile Include="scripts\providers\pageProvider.ts" />
+    <TypeScriptCompile Include="scripts\services\todoService.d.ts" />
+    <TypeScriptCompile Include="scripts\services\todoService.ts" />
+    <TypeScriptCompile Include="scripts\utils\todoUtils.d.ts" />
+    <TypeScriptCompile Include="scripts\utils\todoUtils.ts" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\scripts\" />
+  </ItemGroup>
+
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="npm run tsc&#xD;&#xA;npm run gulp:all" />
+  </Target>
+
+</Project>
